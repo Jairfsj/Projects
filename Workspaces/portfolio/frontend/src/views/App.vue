@@ -4,8 +4,15 @@
     <header class="bg-blue-500 py-4">
       <nav class="container mx-auto text-white text-center">
         <a href="/" class="text-2xl font-bold">Portifolio de Jair Francisco da Silva</a>
+        <div>
+          <router-link to="/" class="mr-4">habilidades</router-link>
+          <router-link to="/formacao" class="mr-4">Formacao<router-link>
+          <router-link to="contato">Contato</router-link>  
+        </div>
       </nav>
     </header>
+
+    <router-view></router-view>
 
     <main>
       <skills />
