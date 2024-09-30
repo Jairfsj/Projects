@@ -1,14 +1,14 @@
 use yew::prelude::*;
-use crate::componentes::{Header, Footer};
+use crate::components::{Header, Footer};
 
-pub struct Projects;
+pub struct Contact;
 
-impl Component for Projects {
+impl Component for Contact {
     type Message = ();
     type Properties = ();
 
-    fn create(_:Self::Properties, _: ComponentLink<Self>) -> Self {
-        Projects
+    fn create(_: Self::Properties, _: ComponentLink<Self>) -> Self {
+        Contact
     }
 
     fn update(&mut self, _: Self::Message) -> ShouldRender {
@@ -17,14 +17,11 @@ impl Component for Projects {
 
     fn view(&self) -> Html {
         html! {
-           <>
+            <>
                 <Header />
                 <main>
-                    <h1>{"Projetos Executados"}</h1>
-                    <ul>
-                        <li>{"Projeto 1: Um sistema de chat em tempo real"}</li>
-                        <li>{"Projeto 2: Um site de protfolio"}</li>   
-                    </ul>
+                    <h1>{"Contato"}</h1>
+                    <p>{"Você pode me contatar através do e-mail: exemplo@dominio.com"}</p>
                 </main>
                 <Footer />
             </>
