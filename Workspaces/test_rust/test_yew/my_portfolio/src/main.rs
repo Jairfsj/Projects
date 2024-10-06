@@ -1,4 +1,4 @@
-#[macro_use] extern crate rcoket;
+#[macro_use] extern crate rocket;
 
 mod controllers;
 mod services;
