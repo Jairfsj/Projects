@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-#[function_component(ContactPage)]
+#[function_component(contato_page)]
 pub fn contact_page() -> Html {
     html! {
         <div>

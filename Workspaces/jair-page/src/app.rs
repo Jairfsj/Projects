@@ -1,12 +1,25 @@
 use yew::prelude::*;
+use yew_router::prelude::*;
+
+mod components;
+use components::{landing_page, about_page, contact_page, navbar, Route};
 
 #[function_component(App)]
 pub fn app() -> Html {
     html! {
-        <main>
-            <img class="logo" src="https://yew.rs/img/logo.png" alt="Yew logo" />
-            <h1>{ "Comecando!" }</h1>
-            <span class="subtitle">{ " Rust " }<i class="heart" /></span>
-        </main>
+        <BrowserRouter>
+            <Navbar />
+            <Switch<Route> render={Switch::render(switch)} />
+        <BrowserRouter>    
     }
 }
+
+fn switch(routes: &Route) -> Html {
+    match routes {
+        Route::Home => html! { <landing_page.rs },
+        Route::About => html! { <about_page /> },
+        Route::Contact => html! { <contact_page /> },
+    }
+}
+
+    
