@@ -27,7 +27,8 @@ pub fn app() -> Html {
                     </button>
                     <div id="navbar-menu" aria-labelledby="navbar-toggle">
                     <ul class="navbar-links">
-                        <li class="navbar-item"><a class="navbar-link" href="/" ></a></li>
+                    
+                        <li class="navbar-item"><a class="navbar-link" href="../"></a></li>
                         <li class="navbar-item"><a class="navbar-link" href="/" ></a></li>
                         <li class="navbar-item"><a class="navbar-link" href="/" ></a></li>
                         <li class="navbar-item"><a class="navbar-link" href="/" ></a></li>
