@@ -3,7 +3,7 @@
 enum ValueType {
     Str(String),
     Int(i32),
-    }
+}
 
 #[derive(Debug)]
 struct VariableDeclaration{
@@ -13,77 +13,77 @@ struct VariableDeclaration{
 
 type AST = Vec<VariableDeclaration>;
 
-#[derive(Debug, Clone, PartialEq)] {
+#[derive(Debug, Clone, PartialEq)] 
 enum Token {
     Var,
     Identifier(String),
     Equals,
-    StringLiteralde(String),
+    StringLiteral(String),
     Intliteral(i32),
     Semicolon,
 }
 
-}
+
 fn lexex(input: &str) -> Vec<Token> {
     let mut tokens = Vec::new();
     let mut chars = input.chars().peekable();
 
-while let Some(&ch) = chars.peek() {
-        match ch {
-            ' ' | '\t' | '\n' | '\r' => {chars.next(); },
-            'a'..='z' | 'A'..='Z' => {
-                let mut name = String::new();
+    while let Some(&ch) = chars.peek() {
+            match ch {
+                ' ' | '\t' | '\n' | '\r' => {chars.next(); },
+                'a'..='z' | 'A'..='Z' => {
+                    let mut name = String::new();
+                    while let Some(&ch) = chars.peek() {
+                        match ch {
+                             'a'..='z' | 'A'..='Z' => {
+                                name.push(chars.next().unwrap());
+                            },
+                            _ => break,
+                        }
+                    }
+                    if name == "var" {
+                        tokens.push(Token::Var);
+                    } else {
+                        tokens.push(Token::Indentifier(name));
+                    }
+                },
+            '"' => {
+                chars.next();
+                let mut string = String::new();
                 while let Some(&ch) = chars.peek() {
                     match ch {
-                         'a'..='z' | 'A'..='Z' => {
-                            name.push(chars.next().unwrap());
+                        '"' => { chars.next(); break; }
+                        ch => string.push(chars.next().unwrap()),
+                    }
+                }
+                tokens.push(Token::StringLiteral(string));
+            },
+            '0'..='9' => {
+                let mut number = String::new();
+                while let Some(&ch) = chars.peek() {
+                    match ch {
+                        '0'..='9' => {
+                            numer.push(chars.next().unwrap());
                         },
                         _ => break,
                     }
                 }
-                if name == "var" {
-                    tokens.push(Token::Var);
-                } else {
-                    tokens.push(Token::Indentifier(name));
-                }
+                tokens.push(Token::Intliteral(number.parse().unwrap()));
             },
-        '"' => {
-            chars.next();
-            let mut string = String::new();
-            while let Some(&ch) = chars.peek() {
-                match ch {
-                    '"' => { chars.next(); break; }
-                    ch => string.push(chars.next().unwrap()),
-                }
-            }
-            tokens.push(Token::StringLiteral(string));
-        },
-        '0'..='9' => {
-            let mut number = String::new();
-            while let Some(&ch) = chars.peek() {
-                match ch {
-                    '0'..='9' => {
-                        numer.push(chars.next().unwrap());
-                    },
-                    _ => break,
-                }
-            }
-            tokens.push(Token::Intliteral(number.parse().unwrap()));
-        },
-        '=' => {
-            chars.next();
-            tokens.push(Token::Equals);
+            '=' => {
+                chars.next();
+                tokens.push(Token::Equals);
 
-        },
-        ';' => {
-            chars.next();
-            tokens.push(Token::Semicolon);
-        },
-        _ => {
-            chars.next();
+            },
+            ';' => {
+                chars.next();
+                tokens.push(Token::Semicolon);
+            },
+            _ => {
+                chars.next();
+            }
         }
     }
-}
 
 tokens
 };
@@ -94,7 +94,7 @@ let mut tokens: impl Iterator<Item = &Token> = tokens.iter().peekable();
 
 while tokens.peek().is_some() {
     match tokens.next() {
-        Some(Token.next(){
+        Some(Token.next()){
             match tokens.next() {
                 Some(Token::Identifier(name)) => {
                     tokens.next(); //consume Equals
